@@ -51,7 +51,6 @@ export class DirectoryMainComponent implements OnInit {
         });
         this.nextPageUrl = data.next;
         this.previousPageUrl = data.previous;
-      console.log('data', data);
     });
   }
 
@@ -90,7 +89,6 @@ export class DirectoryMainComponent implements OnInit {
     this.pokemonsService
       .getPokemon(url)
       .subscribe(pokemon => {
-        console.log('pokemon details, pokemon', pokemon);
         this.currentSelectedPokemon = pokemon;
       })
   }

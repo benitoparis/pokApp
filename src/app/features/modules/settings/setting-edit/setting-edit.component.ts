@@ -24,8 +24,6 @@ export class SettingEditComponent implements OnInit {
     this.createSettingForm();
 
     if (localStorage.hasOwnProperty('userFavourite')) {
-
-      console.log('favorite found');
       this.setExistingSettings();
     }
   }
@@ -73,8 +71,6 @@ export class SettingEditComponent implements OnInit {
   // Check if settings exist in localstorage
   setExistingSettings(): void {
     this.existingUserPref = localStorage.getItem('userFavourite');
-
-    console.log(' this.existingUserPref ',  this.existingUserPref );
 
     // Set the values in form
     this.setItemsPerPage = JSON.parse(this.existingUserPref).itemsPerPage;

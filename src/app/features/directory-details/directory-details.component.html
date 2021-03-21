@@ -7,7 +7,7 @@
             <div>Weight : {{ currentPokemon.weight }}</div>
         </div>
         <div>
-            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/358.png' />
+            <img [src]="currentPokemon.sprites.back_default" />
         </div>
         <div>
             <h6>Abilities:</h6>
