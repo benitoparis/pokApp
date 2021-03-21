@@ -1,0 +1,32 @@
+<div class="row m-3">
+    <!-- left side -->
+    <div id="pokemon-directory-list" class="col-4 p-3">
+        <div class="row pb-2">
+            <div class="col-6 font-weight-bold"> Name </div>
+            <div class="col-6 font-weight-bold"> Add to favourite </div>
+        </div>
+        <div class="row" *ngFor="let pokemon of pokemonList; let index">
+            <div class="col-6" (click)="viewPokemonDetails(index)"> {{ pokemon.name }} </div>
+            <div class="col-6">
+                <span *ngIf="!pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Add<i class="fa fa-plus-square pl-1"></i></span>
+                <span *ngIf="pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Remove<i class="fa fa-minus-circle pl-1"></i></span>
+            </div>
+        </div>
+        <div>Total Pokemon : {{ totalItems }}</div>
+        <div>
+            <button [hidden]="!previousPageUrl" type="button" class="btn btn-secondary btn-lg">Previous page</button>
+            <button [hidden]="!nextPageUrl" type="button" class="btn btn-secondary btn-lg">Next page</button>
+        </div>
+        
+    </div>
+
+    <!-- right side -->
+    <div id="pokemon-details" class="col-8">
+        <app-directory-details
+            [currentPokemon]="currentSelectedPokemon"
+        >
+
+        </app-directory-details>
+    </div>
+</div>
+

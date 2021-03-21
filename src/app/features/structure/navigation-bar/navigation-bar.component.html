@@ -1,0 +1,24 @@
+<section id="navigationBar" class="row" [ngClass]="{'darkTheme': favoriteColorTheme === 'dark', 'lightTheme':favoriteColorTheme === 'light' }">
+    <!-- links --> 
+    <div class="linksZone" class="col-6 d-flex align-items-center">
+        <ul class="d-flex flex-row">
+            <li class="px-1">
+                <a routerLink="/">
+                    <button type="button" class="btn btn-light">Directory</button> 
+                </a>
+            </li>
+            <li class="px-1">
+                <a routerLink="/setting">
+                    <button type="button" class="btn btn-light">Settings</button> 
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- infos --> 
+    <div class="col-6 d-flex align-items-center">
+        <span> Total favourites ({{ totalFavouritePokemon }})</span>
+    </div>
+
+</section>
+

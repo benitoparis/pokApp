@@ -1,0 +1,43 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h3>Choose your preferences</h3>
+        </div>
+
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Global application settings. Feel free to customize your account</p>
+          </blockquote>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center my-5">
+            <form id="Settings" class="" [formGroup]="userForm" (submit)="saveSettings($event)">
+                <div class="form-group">
+                    <label class="font-weight-bold" for="ItemPerPage">Items per page</label>
+                    <select class="form-control" formControlName="itemsPerPage" name="" id="ItemPerPage">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
+            
+                <div class="form-group">
+                    <p class="font-weight-bold">Choose your theme</p>
+                    <label class="px-2" for="dark">Dark</label>
+                    <input  type="radio" formControlName="favouriteTheme" value="dark" name="favouriteTheme" id="dark"/>
+            
+                    <label class="px-2" for="fantasy">Light</label>
+                    <input type="radio" formControlName="favouriteTheme" value="light" name="favouriteTheme" id="light"/>
+            
+                </div>
+        
+                <div>
+                    <button type="submit" class="btn btn-warning">Save my preferences</button>
+                </div>
+            </form>
+        </div>
+
+      </div>
+
+</div>
