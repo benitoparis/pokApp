@@ -13,20 +13,27 @@
             </div>
         </div>
         <div>Total Pokemon : {{ totalItems }}</div>
-        <div>
-            <button [hidden]="!previousPageUrl" type="button" class="btn btn-secondary btn-lg">Previous page</button>
-            <button [hidden]="!nextPageUrl" type="button" class="btn btn-secondary btn-lg">Next page</button>
+        <div class="d-flex justify-content-around">
+            <button [hidden]="!previousPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="previousPage()">Previous page</button>
+            <button [hidden]="!nextPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="nextPage()">Next page</button>
         </div>
         
     </div>
 
     <!-- right side -->
     <div id="pokemon-details" class="col-8">
-        <app-directory-details
-            [currentPokemon]="currentSelectedPokemon"
-        >
 
-        </app-directory-details>
+        <div *ngIf="!currentSelectedPokemon">
+            <img src='https://licensinginternational.org/wp-content/uploads/2019/11/Pokemon.jpg'  width="700" height="600"/>
+        </div>
+
+        <div *ngIf="currentSelectedPokemon">
+            <app-directory-details
+            [currentPokemon]="currentSelectedPokemon"
+            >
+            </app-directory-details>
+        </div>
+
     </div>
 </div>
 

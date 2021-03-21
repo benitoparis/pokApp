@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/core/services/general.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,13 +8,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  @Input() totalFavouritePokemon = 0;
+  totalFavouritePokemon = 0;
   favoriteColorTheme = 'dark';
 
-  constructor() { }
+  constructor(
+    private generalService: GeneralService
+  ) { }
 
   ngOnInit(): void {
     this.setExistingSettings();
+    this.generalService.getCount().subscribe(item=> {
+      this.totalFavouritePokemon = item.number;
+    })
   }
 
   setExistingSettings(): void {

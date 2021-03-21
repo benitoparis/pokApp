@@ -1,5 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/core/services/general.service';
 import { PokemonsService } from 'src/app/core/services/pokemons.service';
 
 interface PokemonDirectoryItem {
@@ -24,9 +25,13 @@ export class DirectoryMainComponent implements OnInit {
   favouritePokemons = new Set();
   queryParams = '';
   itemsPerPage = 10;
+  pageOffset = 0;
 
 
-  constructor(private pokemonsService: PokemonsService) { }
+  constructor(
+    private pokemonsService: PokemonsService,
+    private generalService: GeneralService
+    ) { }
 
   ngOnInit(): void {
     this.setExistingSettings();
@@ -35,7 +40,7 @@ export class DirectoryMainComponent implements OnInit {
 
   getPokemons(): void {
 
-    this.queryParams = `?offset=0&limit=${this.itemsPerPage}`;
+    this.queryParams = `?offset=${this.pageOffset}&limit=${this.itemsPerPage}`;
     this.pokemonsService
       .getPokemons(this.queryParams)
       .subscribe(data=> {
@@ -63,9 +68,12 @@ export class DirectoryMainComponent implements OnInit {
 
       if(this.favouritePokemons.has(pokemon)){ // Add to the list of favourite
         this.favouritePokemons.delete(pokemon);
+        this.generalService.decreaseFavouriteCount();
       } else {
         this.favouritePokemons.add(pokemon);
+        this.generalService.increaseFavouriteCount();
       }
+      
    
     }
 
@@ -97,6 +105,17 @@ export class DirectoryMainComponent implements OnInit {
     } else {
       this.itemsPerPage = 10;
     }
+  }
+
+
+  nextPage(){
+    this.pageOffset += this.itemsPerPage;
+    this.getPokemons();
+  }
+
+  previousPage(){
+    this.pageOffset -= this.itemsPerPage;
+    this.getPokemons();
   }
 
 }
