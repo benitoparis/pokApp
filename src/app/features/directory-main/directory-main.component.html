@@ -1,39 +1,48 @@
-<div class="row m-3">
-    <!-- left side -->
-    <div id="pokemon-directory-list" class="col-4 p-3">
-        <div class="row pb-2">
-            <div class="col-6 font-weight-bold"> Name </div>
-            <div class="col-6 font-weight-bold"> Add to favourite </div>
-        </div>
-        <div class="row" *ngFor="let pokemon of pokemonList; let index">
-            <div class="col-6" (click)="viewPokemonDetails(index)"> {{ pokemon.name }} </div>
-            <div class="col-6">
-                <span *ngIf="!pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Add<i class="fa fa-plus-square pl-1"></i></span>
-                <span *ngIf="pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Remove<i class="fa fa-minus-circle pl-1"></i></span>
-            </div>
-        </div>
-        <div>Total Pokemon : {{ totalItems }}</div>
-        <div class="d-flex justify-content-around">
-            <button [hidden]="!previousPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="previousPage()">Previous page</button>
-            <button [hidden]="!nextPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="nextPage()">Next page</button>
-        </div>
-        
+<div id="content" class="container">
+
+    <div class="">
+        <div class="search-bar" data-label="Type here"></div>
     </div>
-
-    <!-- right side -->
-    <div id="pokemon-details" class="col-8">
-
-        <div *ngIf="!currentSelectedPokemon">
-            <img src='https://resize-gulli.jnsmedia.fr/r/890,__ym__/img//var/jeunesse/storage/images/gulli/chaine-tv/dessins-animes/pokemon/pokemon/pikachu/26571681-1-fre-FR/Pikachu.jpg'  width="700" height="600"/>
+ 
+    <div class="d-flex justify-content-betweenmy-3 p-1">
+        <!-- left side -->
+        <div id="pokemon-directory-list" class="col-5 p-3">
+            <div class="row header-tab-directory">
+                <div class="col-4 font-weight-bold"> Name </div>
+                <div class="col-6 font-weight-bold"> Add to favourite </div>
+            </div>
+            <div class="row directory-row" [class.odd]="odd"   *ngFor="let pokemon of pokemonList; let i = index; let odd = odd; let even= even">
+                <div class="col-6" (click)="viewPokemonDetails(pokemon)"> {{ pokemon.name }} </div>
+                <div class="col-6 p-1 d-flex justify-content-end">
+                    <button class="btn btn-warning" type="button"  *ngIf="!pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Add<i class="fa fa-plus-square pl-1"></i></button>
+                    <button class="btn btn-warning" type="button" *ngIf="pokemon.isFavourite" (click)="toogleAddToFavourite(pokemon)">Remove<i class="fa fa-minus-circle pl-1"></i></button>
+                </div>
+            </div>
+            <div>Total Pokemon : {{ totalItems }}</div>
+            <div class="d-flex justify-content-end">
+                <button [hidden]="!previousPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="previousPage()">Previous page</button>
+                <button [hidden]="!nextPageUrl" type="button" class="btn btn-secondary btn-sm px-2" (click)="nextPage()">Next page</button>
+            </div>
+            
         </div>
-
-        <div *ngIf="currentSelectedPokemon">
-            <app-directory-details
-            [currentPokemon]="currentSelectedPokemon"
-            >
-            </app-directory-details>
+    
+        <!-- right side -->
+        <div id="pokemon-details" class="flex-fill ml-1">
+    
+            <div *ngIf="!currentSelectedPokemon">
+                <img src='http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c32b.png'/>
+            </div>
+    
+            <div *ngIf="currentSelectedPokemon">
+                <app-directory-details
+                [currentPokemon]="currentSelectedPokemon"
+                >
+                </app-directory-details>
+            </div>
+    
         </div>
-
     </div>
 </div>
+
+
 

@@ -1,38 +1,35 @@
-<div>
-    <div class="card ">
-        <div class="card-body">
-          <blockquote class="blockquote mb-0 d-flex justify-content-center">
-            <p>Global application settings. Feel free to customize your account</p>
-          </blockquote>
-        </div>
+<div class="settings">
 
+    <div class="container">
+        <h1>Global application settings. Feel free to customize your account</h1>
         <div class="d-flex justify-content-center align-items-center my-5">
-            <form id="Settings" class="" [formGroup]="userForm" (submit)="saveSettings($event)">
-                <div class="form-group">
-                    <label class="font-weight-bold" for="ItemPerPage">Items per page</label>
-                    <select class="form-control" formControlName="itemsPerPage" name="" id="ItemPerPage">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                    </select>
-                </div>
+            <div class="form-content">
+                <form id="Settings" class="" [formGroup]="userForm" (submit)="saveSettings($event)">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="ItemPerPage">Items per page</label>
+                        <select class="form-control" formControlName="itemsPerPage" name="" id="ItemPerPage">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                
+                    <div class="form-group my-3">
+                        <p class="font-weight-bold">Choose your color theme</p>
+                        <label class="px-2" for="dark">Dark</label>
+                        <input  type="radio" formControlName="favouriteTheme" value="black" name="favouriteTheme" id="dark"/>
+                
+                        <label class="px-2" for="fantasy">Light</label>
+                        <input type="radio" formControlName="favouriteTheme" value="green" name="favouriteTheme" id="light"/>
+                    </div>
             
-                <div class="form-group my-3">
-                    <p class="font-weight-bold">Choose your color theme</p>
-                    <label class="px-2" for="dark">Dark</label>
-                    <input  type="radio" formControlName="favouriteTheme" value="dark" name="favouriteTheme" id="dark"/>
-            
-                    <label class="px-2" for="fantasy">Light</label>
-                    <input type="radio" formControlName="favouriteTheme" value="light" name="favouriteTheme" id="light"/>
-                </div>
-        
-                <div>
-                    <button type="submit" class="btn btn-warning">Save my preferences</button>
-                </div>
-            </form>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning">Save my preferences</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-      </div>
+    </div>
 
 </div>

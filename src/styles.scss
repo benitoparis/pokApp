@@ -6,14 +6,28 @@ $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome';
 
 
-.darkTheme {
-    background-color: black !important;
+:root {
+    --ThemeColor: black !important;
 }
 
-.lightTheme {
-    background-color: darkgrey !important;
+* {
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     cursor: pointer;
+    background-color: var(--ThemeColor);
 }
+
+
+.darkTheme {
+    //background-color: var(--Drack);
+}
+
+.lightTheme {
+    //background-color: var(--Light);
+}
+
+

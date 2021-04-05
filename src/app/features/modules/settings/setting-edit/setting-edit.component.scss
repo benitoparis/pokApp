@@ -1,0 +1,19 @@
+
+.settings {
+    background-image:
+    linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
+    url('http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c32f.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain, cover;
+    height: 100vh;
+}
+
+
+.form-content {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    width: 400px;
+    padding: 10px 15px;
+    opacity:0.9;
+}

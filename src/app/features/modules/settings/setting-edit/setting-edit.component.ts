@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -14,7 +14,8 @@ export class SettingEditComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private elementRef: ElementRef
   ) { 
     
   }
@@ -61,6 +62,8 @@ export class SettingEditComponent implements OnInit {
       itemsPerPage: this.getItemsPerPage.value || null,
       favouriteTheme: this.getFavouriteTheme.value || null
     };
+
+    this.elementRef.nativeElement.ownerDocument.body.style.setProperty('--ThemeColor',this.getFavouriteTheme.value);
 
     // save Json in local storage
     localStorage.setItem('userFavourite', JSON.stringify(usePreferenceSettings));

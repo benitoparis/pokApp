@@ -1,5 +1,5 @@
 import { isNgTemplate } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { GeneralService } from 'src/app/core/services/general.service';
 import { PokemonsService } from 'src/app/core/services/pokemons.service';
 
@@ -26,16 +26,24 @@ export class DirectoryMainComponent implements OnInit {
   queryParams = '';
   itemsPerPage = 10;
   pageOffset = 0;
+  progressBarWidth= 25;
 
 
   constructor(
     private pokemonsService: PokemonsService,
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private elementRef: ElementRef
     ) { }
 
   ngOnInit(): void {
     this.setExistingSettings();
     this.getPokemons();
+
+  
+    // setInterval(()=> {
+    //   console.log('in');
+    //    this.elementRef.nativeElement.ownerDocument.body.style.setProperty('--width', this.progressBarWidth++);
+    //  }, 1000);
   }
 
   getPokemons(): void {
@@ -77,6 +85,10 @@ export class DirectoryMainComponent implements OnInit {
     }
 
     this.setFavouriteStatus();
+  }
+
+  ngAfterViewInit(){
+
   }
 
   setFavouriteStatus(): void {
